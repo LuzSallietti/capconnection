@@ -1,0 +1,124 @@
+{
+    "_version": "1.49.0",
+    "sap.app": {
+        "id": "ns.connectcap",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:basic",
+            "version": "1.11.0",
+            "toolsId": "7d586afe-26e7-4c46-981c-e706d9a77fb4"
+        },
+        "dataSources": {
+            "CAPService": {
+                "uri": "odata/v4/catalog/A_BusinessPartner",
+                "type": "JSON",
+                "settings": {
+                    "annotations": [],
+                    "odataVersion": "4.0"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": true,
+        "dependencies": {
+            "minUI5Version": "1.118.0",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.f": {},
+                "sap.suite.ui.generic.template": {},
+                "sap.ui.comp": {},
+                "sap.ui.generic.app": {},
+                "sap.ui.table": {},
+                "sap.ushell": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "ns.connectcap.i18n.i18n"
+                }
+            },
+            "oBusinessPartnersService": {
+                "dataSource": "CAPService",
+                "preload": true,
+                "settings": {}
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "ns.connectcap.view",
+                "controlAggregation": "pages",
+                "controlId": "app",
+                "clearControlAggregation": false
+            },
+            "routes": [
+                {
+                    "name": "RouteMain",
+                    "pattern": ":?query:",
+                    "target": [
+                        "TargetMain"
+                    ]
+                }
+            ],
+            "targets": {
+                "TargetMain": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "Main",
+                    "viewName": "Main"
+                }
+            }
+        },
+        "rootView": {
+            "viewName": "ns.connectcap.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "App"
+        }
+    },
+    "sap.cloud": {
+        "public": true,
+        "service": "connectcap"
+    }
+}
