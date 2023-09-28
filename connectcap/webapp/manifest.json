@@ -17,7 +17,7 @@
         },
         "dataSources": {
             "CAPService": {
-                "uri": "odata/v4/catalog/A_BusinessPartner",
+                "uri": "odata/v4/catalogo/A_BussinessPartner",
                 "type": "JSON",
                 "settings": {
                     "annotations": [],
@@ -68,7 +68,7 @@
                     "bundleName": "ns.connectcap.i18n.i18n"
                 }
             },
-            "oBusinessPartnersService": {
+            "oBussinessPartnersService": {
                 "dataSource": "CAPService",
                 "preload": true,
                 "settings": {}
